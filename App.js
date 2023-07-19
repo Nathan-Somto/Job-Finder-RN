@@ -1,20 +1,35 @@
-import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import React from 'react'
+import { ThemeProvider } from '@rneui/themed'
+import { NavigationContainer } from '@react-navigation/native'
+import RootNavigator from '@navigation/RootNavigator'
+// import * as SplashScreen from 'expo-splash-screen'
+import theme from '@constants/theme'
+// import { useFonts } from 'expo-font'
 
-export default function App() {
+/* await SplashScreen.preventAutoHideAsync() */
+
+export default function App () {
+  /* const [fontsLoaded] = useFonts({
+    Inter_400Regular: require('@assets/fonts/Inter-Regular.ttf'),
+    Inter_600SemiBold: require('@assets/fonts/Inter-SemiBold.ttf')
+  });
+  async function loadFonts () {
+    if (fontsLoaded) {
+      await SplashScreen.hideAsync()
+    }
+  }
+  useEffect(() => {
+    loadFonts()
+  }, [fontsLoaded])
+
+  if (!fontsLoaded) {
+    return null
+  } */
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
-  );
+    <ThemeProvider theme={theme}>
+    <NavigationContainer>
+        <RootNavigator/>
+      </NavigationContainer>
+    </ThemeProvider>
+  )
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
