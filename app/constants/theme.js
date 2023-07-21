@@ -3,6 +3,7 @@ const theme = createTheme({
   lightColors: {
     primary: '#3E4F88',
     secondary: '#808080',
+    background: '#F6F6F6',
     white: '#fff'
   },
   components: {

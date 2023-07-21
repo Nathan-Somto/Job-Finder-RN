@@ -20,8 +20,8 @@ export default function RootNavigator () {
             }
           }
         >
+            <Stack.Screen name='Drawer' component={DrawerNavigator} />
             <Stack.Screen name='Onboarding' component={Onboarding} />
-            <Stack.Screen name='Home' component={DrawerNavigator} />
             <Stack.Screen name='Welcome' component={Welcome}/>
             <Stack.Screen name='Details' component={Details}/>
             <Stack.Screen name='Apply' component={Apply}/>
