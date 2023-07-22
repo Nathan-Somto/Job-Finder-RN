@@ -4,6 +4,7 @@ import { NavigationContainer } from '@react-navigation/native'
 import RootNavigator from '@navigation/RootNavigator'
 // import * as SplashScreen from 'expo-splash-screen'
 import theme from '@constants/theme'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 // import { useFonts } from 'expo-font'
 
 /* await SplashScreen.preventAutoHideAsync() */
@@ -27,9 +28,11 @@ export default function App () {
   } */
   return (
     <ThemeProvider theme={theme}>
+    <GestureHandlerRootView style={{flex:1}}>
     <NavigationContainer>
         <RootNavigator/>
       </NavigationContainer>
+    </GestureHandlerRootView>
     </ThemeProvider>
   )
 }
