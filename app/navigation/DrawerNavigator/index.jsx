@@ -14,14 +14,14 @@ export default function DrawerNavigator () {
     'https://images.unsplash.com/photo-1633332755192-727a05c4013d?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8dXNlcnxlbnwwfHwwfHx8MA%3D%3D&auto=format&fit=crop&w=100&q=60'
   return (
     <Drawer.Navigator
-      screenOptions={{
+      screenOptions={({ navigation }) => ({
         headerShadowVisible: false,
         headerRight: () => <UserAvatar src={profileImg} size="small" />,
-        headerLeft: () => <Menu />,
+        headerLeft: () => <Menu handlePress={navigation.toggleDrawer} />,
         headerStyle: {
           height: 75
         }
-      }}
+      })}
     >
       <Drawer.Screen
         name="Home"

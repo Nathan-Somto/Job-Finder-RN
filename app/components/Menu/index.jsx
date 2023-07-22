@@ -1,9 +1,9 @@
 import { TouchableOpacity, StyleSheet } from 'react-native'
 import { MaterialIcons } from '@expo/vector-icons'
 import React from 'react'
-export default function Menu () {
+export default function Menu ({ handlePress }) {
   return (
-    <TouchableOpacity style={styles.container}>
+    <TouchableOpacity style={styles.container} onPress={() => handlePress()}>
       <MaterialIcons name="segment" size={22} color={'#fff'} />
     </TouchableOpacity>
   )
