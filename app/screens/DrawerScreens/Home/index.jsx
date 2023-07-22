@@ -1,18 +1,21 @@
-import { ActivityIndicator, View } from 'react-native'
+import { StyleSheet, ActivityIndicator, View } from 'react-native'
 import React from 'react'
 import Search from '@components/Search'
 import JobFilters from '@components/JobFilters'
 import PopularJobs from '@components/PopularJobs'
 import jobData from '@data/data.json'
 import { useTheme, Text } from '@rneui/themed'
+import NearbyJobs from '@components/NearbyJobs'
 export default function Home () {
-  const [data, setData] = React.useState([])
+  const [popularJobsData, setPopularJobsData] = React.useState([])
+  const [nearbyJobsData, setNearbyJobsData] = React.useState([])
   const { theme } = useTheme()
   React.useEffect(() => {
-    setData(jobData.data.slice(0, 9))
+    setPopularJobsData(jobData.data.slice(0, 9))
+    setNearbyJobsData(jobData.data.slice(10, 19))
   }, [])
   return (
-    <View style={{ backgroundColor: theme.colors.background }}>
+    <View style={{ flex: 1, backgroundColor: theme.colors.background, overflow: 'scroll' }}>
       <View style={styles.welcomeContainer}>
         <Text style={{ color: '#828282' }}>Hello Nathan</Text>
         <Text
@@ -25,14 +28,22 @@ export default function Home () {
       </View>
       <Search />
       <JobFilters />
-      {data.length
+      {popularJobsData.length
         ? (
-        <PopularJobs data={data} />
+        <PopularJobs data={popularJobsData} />
           )
         : (
         <ActivityIndicator color={theme.colors.primary} size={'small'} />
           )}
-    </View>
+          {nearbyJobsData.length !== 0
+            ? (
+            <NearbyJobs data={nearbyJobsData} setData={setNearbyJobsData} />
+
+              )
+            : (
+              <ActivityIndicator color={theme.colors.primary} size={'small'} />
+              )}
+          </View>
   )
 }
 
