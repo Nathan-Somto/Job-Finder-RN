@@ -9,9 +9,9 @@ export default function DetailsAbout ({ aboutContent }) {
       <View>
         <Text
           h2
-          style={{
+          h2Style={{
             color: theme.colors.primary,
-            fontSize: 22,
+            fontSize: 24,
             fontWeight: '600'
           }}
         >
