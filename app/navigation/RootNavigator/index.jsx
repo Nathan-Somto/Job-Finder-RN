@@ -58,7 +58,25 @@ export default function RootNavigator () {
       />
       <Stack.Screen
         name="Search"
-        options={{ presentation: 'modal' }}
+        options={
+          ({ navigation }) => ({
+            headerShown: true,
+            headerBackTitleVisible: false,
+            headerTitle: 'Search',
+            headerShadowVisible: false,
+            headerLeft: () => (
+              <TouchableOpacity
+                onPress={() => navigation.goBack()}
+                style={styles.btnContainer}
+              >
+                <AntDesign name="arrowleft" size={24} color="#808080" />
+              </TouchableOpacity>
+            ),
+            headerStyle: {
+              height: 75
+            }
+          })
+        }
         component={Search}
       />
     </Stack.Navigator>
