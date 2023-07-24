@@ -1,15 +1,24 @@
 import { StyleSheet, ActivityIndicator, View } from 'react-native'
 import React from 'react'
 import Search from '@components/Search'
-import JobFilters from '@components/JobFilters'
+import TabFilters from '@components/TabFilters'
 import PopularJobs from '@components/PopularJobs'
 import jobData from '@data/data.json'
 import { useTheme, Text } from '@rneui/themed'
 import NearbyJobs from '@components/NearbyJobs'
+import { useNavigation } from '@react-navigation/native'
 export default function Home () {
   const [popularJobsData, setPopularJobsData] = React.useState([])
   const [nearbyJobsData, setNearbyJobsData] = React.useState([])
   const { theme } = useTheme()
+  const jobTypes = ['All', 'Full-Time', 'Contractor', 'Consulting', 'Part-Time']
+  const navigation = useNavigation()
+  function handleNavigate (selectedItem) {
+    if (typeof selectedItem !== 'string') return
+    navigation.navigate('Search', {
+      jobType: selectedItem.toUpperCase().replace('-', '')
+    })
+  }
   React.useEffect(() => {
     setPopularJobsData(jobData.data.slice(0, 9))
     setNearbyJobsData(jobData.data.slice(10, 19))
@@ -27,7 +36,7 @@ export default function Home () {
         </Text>
       </View>
       <Search />
-      <JobFilters />
+      <TabFilters filterInfo={jobTypes} onPress={handleNavigate} />
       {popularJobsData.length
         ? (
         <PopularJobs data={popularJobsData} />
