@@ -6,6 +6,9 @@ import Applications from '@screens/DrawerScreens/Applications'
 import Settings from '@screens/DrawerScreens/Settings'
 import Menu from '@components/Menu'
 import UserAvatar from '@components/UserAvatar'
+import CustomDrawer from '@components/CustomDrawer'
+import { TouchableOpacity, StyleSheet } from 'react-native'
+import { AntDesign } from '@expo/vector-icons'
 
 export default function DrawerNavigator () {
   // @Todo: get profileImg from async storage
@@ -17,15 +20,32 @@ export default function DrawerNavigator () {
       screenOptions={({ navigation }) => ({
         headerShadowVisible: false,
         headerRight: () => <UserAvatar src={profileImg} size="small" />,
-        headerLeft: () => <Menu handlePress={navigation.toggleDrawer} />,
+        headerLeft: () => (
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={styles.btnContainer}
+          >
+            <AntDesign name="arrowleft" size={24} color="#808080" />
+          </TouchableOpacity>
+        ),
         headerStyle: {
           height: 75
+        },
+        drawerStyle: {
+          borderTopRightRadius: 20,
+          borderBottomRightRadius: 8,
+          overflow: 'hidden'
         }
       })}
+      drawerContent={(props) => <CustomDrawer {...props} />}
     >
       <Drawer.Screen
         name="Home"
-        options={{ drawerLabel: () => null, headerTitle: '' }}
+        options={({ navigation }) => ({
+          headerLeft: () => <Menu handlePress={navigation.toggleDrawer} />,
+          drawerLabel: () => null,
+          headerTitle: ''
+        })}
         component={Home}
       />
       <Drawer.Screen name="EditProfile" component={EditProfile} />
@@ -34,3 +54,14 @@ export default function DrawerNavigator () {
     </Drawer.Navigator>
   )
 }
+const styles = StyleSheet.create({
+  btnContainer: {
+    width: 40,
+    height: 40,
+    backgroundColor: '#eee',
+    borderRadius: 6,
+    justifyContent: 'center',
+    alignItems: 'center',
+    marginHorizontal: 10
+  }
+})
