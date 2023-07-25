@@ -53,30 +53,34 @@ export default function RootNavigator () {
       <Stack.Screen name="Apply" component={Apply} />
       <Stack.Screen
         name="Filters"
-        options={{ presentation: 'modal' }}
+        options={{
+          presentation: 'modal',
+          cardStyle: {
+            borderTopRightRadius: 30,
+            borderTopLeftRadius: 30
+          }
+        }}
         component={Filters}
       />
       <Stack.Screen
         name="Search"
-        options={
-          ({ navigation }) => ({
-            headerShown: true,
-            headerBackTitleVisible: false,
-            headerTitle: 'Search',
-            headerShadowVisible: false,
-            headerLeft: () => (
-              <TouchableOpacity
-                onPress={() => navigation.goBack()}
-                style={styles.btnContainer}
-              >
-                <AntDesign name="arrowleft" size={24} color="#808080" />
-              </TouchableOpacity>
-            ),
-            headerStyle: {
-              height: 75
-            }
-          })
-        }
+        options={({ navigation }) => ({
+          headerShown: true,
+          headerBackTitleVisible: false,
+          headerTitle: 'Search',
+          headerShadowVisible: false,
+          headerLeft: () => (
+            <TouchableOpacity
+              onPress={() => navigation.goBack()}
+              style={styles.btnContainer}
+            >
+              <AntDesign name="arrowleft" size={24} color="#808080" />
+            </TouchableOpacity>
+          ),
+          headerStyle: {
+            height: 75
+          }
+        })}
         component={Search}
       />
     </Stack.Navigator>
