@@ -12,11 +12,11 @@ const theme = createTheme({
     },
     Text: {
       style: {
-      /*   fontFamily: 'Inter_400Regular', */
+        fontFamily: 'Inter_400Regular',
         fontSize: 16
       },
       h1Style: {
-      /*   fontFamily: 'Inter_600SemiBold', */
+        fontFamily: 'Inter_600SemiBold',
         fontSize: 30
       },
       h2Style: {
