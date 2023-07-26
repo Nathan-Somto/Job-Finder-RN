@@ -48,7 +48,13 @@ export default function DrawerNavigator () {
         })}
         component={Home}
       />
-      <Drawer.Screen name="EditProfile" component={EditProfile} />
+      <Drawer.Screen name="EditProfile" options={{
+        headerStyle: {
+          backgroundColor: '#f6f6f6'
+        },
+        headerRight: null,
+        headerTitle: 'Profile'
+      }} component={EditProfile} />
       <Drawer.Screen name="Applications" component={Applications} />
       <Drawer.Screen name="Settings" component={Settings} />
     </Drawer.Navigator>
