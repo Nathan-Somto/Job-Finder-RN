@@ -56,7 +56,15 @@ export default function DrawerNavigator () {
         headerTitle: 'Profile'
       }} component={EditProfile} />
       <Drawer.Screen name="Applications" component={Applications} />
-      <Drawer.Screen name="Settings" component={Settings} />
+      <Drawer.Screen name="Settings"
+      options={{
+        headerStyle: {
+          backgroundColor: '#f6f6f6',
+          height: 75
+        },
+        headerTitle: 'Notifcation Settings'
+      }}
+      component={Settings} />
     </Drawer.Navigator>
   )
 }
