@@ -6,6 +6,12 @@ const theme = createTheme({
     background: '#F6F6F6',
     white: '#fff'
   },
+  darkColors: {
+    primary: '#222B4D',
+    secondary: '#5C5C5C',
+    background: '#1A1A1A',
+    white: '#ddd'
+  },
   components: {
     Button: {
       radius: 10
